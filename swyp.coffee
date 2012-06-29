@@ -29,9 +29,10 @@ $ ->
   $swypWindow = $('#swypframe')[0].contentWindow
   
   $swypWindow.postMessage {e: 'ready'}
-###your specific implementation!###
+ 
+  ###your specific implementation!###
   
-  $('#sunset').live(eventsForDevice[0], (e)->
+  $('#filePrompt').live(eventsForDevice[0], (e)->
     imgSrc =  $(this).attr 'src'
     $('#swypframe').show()
     # message, targetOrigin: 
