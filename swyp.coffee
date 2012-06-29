@@ -25,11 +25,7 @@ $ ->
                              .attr('src', if testing then 'http://127.0.0.1:3000' else 'https://swypserver.herokuapp.com')
 
   $('body').append $swypframe
-
-  $swypWindow = $('#swypframe')[0].contentWindow
   
-  $swypWindow.postMessage {e: 'ready'}
- 
   ###your specific implementation!###
   
   $('#filePrompt').live(eventsForDevice[0], (e)->
