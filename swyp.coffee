@@ -11,8 +11,6 @@ receiveMessage = (e)->
     $('#swypframe').hide()
 
 $ ->
-  console.log 'test'
-
   window.addEventListener "message", receiveMessage, false
 
   # dynamically load the swyp stylesheet
@@ -29,7 +27,10 @@ $ ->
   $('body').append $swypframe
 
   $swypWindow = $('#swypframe')[0].contentWindow
-
+  
+  $swypWindow.postMessage {e: 'ready'}
+###your specific implementation!###
+  
   $('#sunset').live(eventsForDevice[0], (e)->
     imgSrc =  $(this).attr 'src'
     $('#swypframe').show()
