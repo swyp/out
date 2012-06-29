@@ -29,7 +29,14 @@ $ ->
   $swypWindow = $('#swypframe')[0].contentWindow
   
   ###your specific implementation!###
-  
+ 	window.fileURL = "http://swyp.us/out/filePrompt.jpg"
+
+  window.pickFileButtonPressed = ->
+    console.log "pick file button pressed!"
+    filepicker.getFile filepicker.MIMETYPES.IMAGES, {'modal': true}, (url, metadata) ->
+      #alert('You just uploaded '+metadata.filename+'! '+ 'You can access the file at '+url)
+      window.updatePromptWithNewFileURL (url)
+
   $('#filePrompt').live(eventsForDevice[0], (e)->
     imgSrc =  $(this).attr 'src'
     $('#swypframe').show()
@@ -37,3 +44,7 @@ $ ->
     # change targetOrigin to the real swyp server url in production
     $swypWindow.postMessage {e: 'dragstart', img: imgSrc, touches:[e.screenX, e.screenY]}, "*"
   )
+
+  window.updatePromptWithNewFileURL = (fileURL) ->
+    window.fileURL = fileURL
+    $('#filePrompt').attr('src', fileURL)

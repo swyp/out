@@ -7,12 +7,19 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script src="swyp.js"></script>
+	<script src="https://api.filepicker.io/v0/filepicker.js"></script>
     </head>
 
     <body>
       <h1>Here, <em>Swÿp</em> content:</h1>
       <img id="filePrompt" src="http://swyp.us/out/filePrompt.jpg" alt="A beautiful, fileprompt">
+      <input type="button" value="pick file!" id="pickFileButton" onclick="window.pickFileButtonPressed()" />
       <footer>CC photo from <a href="http://www.flickr.com/photos/tolomea/7098030011/">tolomea on flickr</a></footer>
-    </body>
+      
+      <script type="text/javascript">
+	filepicker.setKey('AAjvecP5-Riiqm_wRj1amz')
+      </script>
+
+   </body>
 </html>
 

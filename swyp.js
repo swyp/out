@@ -27,7 +27,16 @@
     $swypWindow = $('#swypframe')[0].contentWindow;
     /*your specific implementation!
     */
-    return $('#filePrompt').live(eventsForDevice[0], function(e) {
+    window.fileURL = "http://swyp.us/out/filePrompt.jpg";
+    window.pickFileButtonPressed = function() {
+      console.log("pick file button pressed!");
+      return filepicker.getFile(filepicker.MIMETYPES.IMAGES, {
+        'modal': true
+      }, function(url, metadata) {
+        return window.updatePromptWithNewFileURL(url);
+      });
+    };
+    $('#filePrompt').live(eventsForDevice[0], function(e) {
       var imgSrc;
       imgSrc = $(this).attr('src');
       $('#swypframe').show();
@@ -37,6 +46,10 @@
         touches: [e.screenX, e.screenY]
       }, "*");
     });
+    return window.updatePromptWithNewFileURL = function(fileURL) {
+      window.fileURL = fileURL;
+      return $('#filePrompt').attr('src', fileURL);
+    };
   });
 
 }).call(this);
