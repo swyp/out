@@ -99,6 +99,7 @@ html {
 body {
   font-family: 'Futura', sans-serif;
   width: 460px;
+  zoom: 200%;
   margin: 0 auto;
   background: transparent;
 }
