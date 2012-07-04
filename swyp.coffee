@@ -32,19 +32,20 @@ $ ->
  	window.fileURL = "http://swyp.us/out/filePrompt.jpg"
 
   window.pickFileButtonPressed = ->
-    console.log "pick file button pressed!"
-    filepicker.getFile filepicker.MIMETYPES.IMAGES, {'modal': true}, (url, metadata) ->
-      #alert('You just uploaded '+metadata.filename+'! '+ 'You can access the file at '+url)
-      window.updatePromptWithNewFileURL (url)
+    filepicker.getFile null, {'modal': true, services: [filepicker.SERVICES.IMAGE_SEARCH, filepicker.SERVICES.COMPUTER,filepicker.SERVICES.URL, filepicker.SERVICES.WEBCAM, filepicker.SERVICES.FACEBOOK, filepicker.SERVICES.DROPBOX]}, (url, metadata) ->
+      window.updatePromptWithNewFileURL url, metadata.type
 
-  $('#filePrompt').live(eventsForDevice[0], (e)->
+  $('#filePreview').live(eventsForDevice[0], (e)->
     imgSrc =  $(this).attr 'src'
     $('#swypframe').show()
-    # message, targetOrigin: 
-    # change targetOrigin to the real swyp server url in production
-    $swypWindow.postMessage {e: 'dragstart', img: imgSrc, touches:[e.screenX, e.screenY]}, "*"
+    $swypWindow.postMessage {e: 'dragstart', fileURL:window.fileURL, img: imgSrc, touches:[e.screenX, e.screenY]}, "*"
   )
 
-  window.updatePromptWithNewFileURL = (fileURL) ->
+  window.updatePromptWithNewFileURL = (fileURL, fileType) ->
     window.fileURL = fileURL
-    $('#filePrompt').attr('src', fileURL)
+    
+    previewImageURL = fileURL
+    if fileType.substring(0, "image".length) != "image"
+      previewImageURL = "http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Text_document_with_page_number_icon.svg/500px-Text_document_with_page_number_icon.svg.png"
+    
+    $('#filePreview').attr('src', previewImageURL)

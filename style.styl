@@ -1,29 +1,60 @@
+@import '/usr/local/lib/node_modules/nib/lib/nib'
+
+global-reset()
+
+blue = #377ad0 
+ 
 *
   margin 0
   padding 0
 
 html
-  background url('grilled.png') repeat
+  background url('../grilled.png') repeat
 body
   font-family 'Futura', sans-serif
-  width 960px
+  width 460px
   margin 0 auto
+  background transparent
 h1
+  display inline-block
   line-height 2
-  font-size 72px
+  font-size 40px
   font-weight normal
   text-shadow 0px 1px 0px #fff
   & em
     color #cc3333
     font-style normal
+
+#howToPrompt
+  text-align center
+  margin-top 5px
+
+#rightButton              
+  float right
+  padding-top 28px
+  display inline-block
+  & a
+   width 240px 
+   download-button(bg = blue, height = 32px) 
+   color #fff 
+   font-size 16px
+   line-height 1.5                           
+   margin-bottom 16px                        
+   font-weight bold                          
   
-#sunset
+#filePreview
   display block
-  width 960px
+  width 350px
   height auto
+  float center
+  border-radius 5px
+  margin auto
+
 footer
   text-align center
-  margin 32px
+  margin-top 30px
+  line-height: 1.5
+  font-size 14px
   & a
     color #cc6666
     text-decoration none

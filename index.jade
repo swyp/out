@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 
+    em Sw&yuml;p 
+    | out:
+
+  
+  #rightButton
+    a#filePickButton(href="javascript:void(0)", onclick="window.pickFileButtonPressed.apply()") Pick a File
+
+  img(id="filePreview", src="http://swyp.us/out/filePrompt.jpg")
+  
+  p#howToPrompt just drag to send
+
+  script(type="text/javascript")
+    filepicker.setKey('AAjvecP5-Riiqm_wRj1amz')
