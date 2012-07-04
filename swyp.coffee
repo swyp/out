@@ -38,12 +38,14 @@ $ ->
   $('#filePreview').live(eventsForDevice[0], (e)->
     imgSrc =  $(this).attr 'src'
     $('#swypframe').show()
-    $swypWindow.postMessage {e: 'dragstart', fileURL:window.fileURL, img: imgSrc, touches:[e.screenX, e.screenY]}, "*"
+    $swypWindow.postMessage {e: 'dragstart', typeGroups:window.typeGroups, img: imgSrc, touches:[e.screenX, e.screenY]}, "*"
   )
 
   window.updatePromptWithNewFileURL = (fileURL, fileType) ->
     window.fileURL = fileURL
-    
+    typeGroup = {contentURL: fileURL, contentMIME: fileType}
+    window.typeGroups = [typeGroup]
+
     previewImageURL = fileURL
     if fileType.substring(0, "image".length) != "image"
       previewImageURL = "http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Text_document_with_page_number_icon.svg/500px-Text_document_with_page_number_icon.svg.png"
