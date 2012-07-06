@@ -31,7 +31,6 @@
     /*your specific implementation!
     */
 
-    window.fileURL = "http://swyp.us/out/filePrompt.jpg";
     window.pickFileButtonPressed = function() {
       return filepicker.getFile(null, {
         'modal': true,
@@ -51,7 +50,7 @@
         touches: [e.screenX, e.screenY]
       }, "*");
     });
-    return window.updatePromptWithNewFileURL = function(fileURL, fileType) {
+    window.updatePromptWithNewFileURL = function(fileURL, fileType) {
       var previewImageURL, typeGroup;
       window.fileURL = fileURL;
       typeGroup = {
@@ -65,6 +64,10 @@
       }
       return $('#filePreview').attr('src', previewImageURL);
     };
+    /*did load implementation!
+    */
+
+    return window.updatePromptWithNewFileURL("http://swyp.us/out/filePrompt.jpg", "image/jpg");
   });
 
 }).call(this);

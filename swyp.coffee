@@ -29,7 +29,6 @@ $ ->
   $swypWindow = $('#swypframe')[0].contentWindow
   
   ###your specific implementation!###
- 	window.fileURL = "http://swyp.us/out/filePrompt.jpg"
 
   window.pickFileButtonPressed = ->
     filepicker.getFile null, {'modal': true, services: [filepicker.SERVICES.IMAGE_SEARCH, filepicker.SERVICES.COMPUTER,filepicker.SERVICES.URL, filepicker.SERVICES.WEBCAM, filepicker.SERVICES.FACEBOOK, filepicker.SERVICES.DROPBOX]}, (url, metadata) ->
@@ -51,3 +50,6 @@ $ ->
       previewImageURL = "http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Text_document_with_page_number_icon.svg/500px-Text_document_with_page_number_icon.svg.png"
     
     $('#filePreview').attr('src', previewImageURL)
+  
+  ###did load implementation!###
+  window.updatePromptWithNewFileURL "http://swyp.us/out/filePrompt.jpg", "image/jpg"
