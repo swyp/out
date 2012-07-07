@@ -94,13 +94,14 @@ a img {
   padding: 0;
 }
 html {
-  background: url("../grilled.png") repeat;
+  background: url("../img/groovepaper.png") repeat;
+  border-top: 4px solid #377ad0;
 }
 body {
   font-family: 'Futura', sans-serif;
   width: 460px;
-  zoom: 100%;
   margin: 0 auto;
+  margin-top: 10px;
   background: transparent;
 }
 h1 {
@@ -198,7 +199,7 @@ footer {
   font-size: 14px;
 }
 footer a {
-  color: #c66;
+  color: #377ad0;
   text-decoration: none;
   position: relative;
 }
